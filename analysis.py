@@ -74,16 +74,16 @@ inspect_dataframe(df_stress_events, "Stress events")
 df_stress_events['ersparnisse']= BATTERY_CAPACITY*df_stress_events['spread'].abs()
 total_savings_stress_events= df_stress_events['ersparnisse'].sum()
 savings_stress_pro_volume= total_savings_stress_events/ (BATTERY_CAPACITY*len(df_stress_events))
-print(f"Ersparnisse bei Steuerungsmaßnahmen in Stress events: {total_savings_stress_events:.3f} Euro")
-print(f"Ersparnisse pro MWh bei Steuerungsmaßnahmen in Stress events: {savings_stress_pro_volume:.3f} €/MWh")
+print(f"Ersparnisse bei Steuerungsmaßnahmen in Stress events: {total_savings_stress_events:.2f} Euro")
+print(f"Ersparnisse pro MWh bei Steuerungsmaßnahmen in Stress events: {savings_stress_pro_volume:.2f} €/MWh")
 
 
 # Calculation of savings achieved through control measures when the Battery is available always 
 df['ersparnisse wenn immer']= BATTERY_CAPACITY*df['spread'].abs()
 total_savings_always= df['ersparnisse wenn immer'].sum()
 savings_pro_volume= total_savings_always/ (BATTERY_CAPACITY*len(df))
-print(f"Ersparnisse bei Steuerungsmaßnahmen wenn Batterie immer verfügbar: {total_savings_always:.3f} Euro")
-print(f"Ersparnisse pro MWh bei Steuerungsmaßnahmen wenn Batterie immer verfügbar: {savings_pro_volume:.3f} €/MWh")
+print(f"Ersparnisse bei Steuerungsmaßnahmen wenn Batterie immer verfügbar: {total_savings_always:.2f} Euro")
+print(f"Ersparnisse pro MWh bei Steuerungsmaßnahmen wenn Batterie immer verfügbar: {savings_pro_volume:.2f} €/MWh")
 
 #  Percentage of costs covered through targeted use
 share_captured = total_savings_stress_events / total_savings_always
@@ -96,19 +96,19 @@ print(f"bei nur {share_of_time:.1%} der Einsatzzeit")
 ## Correlation calculation
  ## Spot price and rebap
 corr_matrix = df[["spot_preis", "rebap"]].corr() ## matrix als output
-print(corr_matrix)
+print(corr_matrix.round(2))
 
  ##Spot price volatility and reBAP
 corr = df["spot_volatilität"].corr(df["rebap"]) #pearson coefficient as default
-print(f"Korrelation zwischen Spotpreis Volatilität und reBAP: {corr:.3f}")
+print(f"Korrelation zwischen Spotpreis Volatilität und reBAP: {corr:.2f}")
 
 threshold = df["spot_volatilität"].abs().quantile(0.75)
 
 high_vol = df[df["spot_volatilität"] >= threshold]
 low_vol = df[df["spot_volatilität"] < threshold]
 
-print("Durchschnittlicher reBAP (hohe Volatilität):", high_vol["rebap"].abs().mean())
-print("Durchschnittlicher reBAP (geringe Volatilität):", low_vol["rebap"].abs().mean())
+print (f"Durchschnittlicher reBAP (hohe Volatilität):{high_vol["rebap"].abs().mean():.2f}")
+print(f"Durchschnittlicher reBAP (geringe Volatilität): {low_vol["rebap"].abs().mean():.2f}")
 
 #############################################Plotting#########################################
 ################################################################################################
