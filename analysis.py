@@ -56,7 +56,7 @@ inspect_dataframe(df,"Merged_df") #investigating the dataframe
 df['spread']= df["rebap"]-df['spot_preis'] #creating a new column to calculate spread
 
 #creating a new column for spot price volatility on a 2 hour rolling basis
-df["spot_volatilität"] = (df["spot_preis"].rolling(window=8).std()) 
+df["spot_volatilität"] = (df["spot_preis"].rolling(window=ROLLING_WINDOW).std()) 
 
 ##############################################################################################
 ###########################################################################################
