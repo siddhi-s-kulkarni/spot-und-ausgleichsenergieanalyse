@@ -22,9 +22,17 @@ Die reBAP-Preise werden viertelstündlich abgerechnet. Die Day-Ahead-Spotmarktpr
 
 Es wird ein Batteriespeicher mit einer Kapazität von 0,1 MWh angenommen, der während Stress-Ereignissen als Steuerungsmaßnahme eingesetzt wird. Für die Zwecke dieses Projekts wird zudem angenommen, dass die Batterie bei Bedarf jederzeit über ausreichende Kapazität verfügt. Bei dem Batteriespeicher handelt es sich um eine vereinfachte Modellierung, um den wirtschaftlichen Effekt einer gezielten Steuerungsmaßnahme zu quantifizieren. Eine realistischere Modellierung würde unter anderem Ladezustand, Lade- und Entladeleistung, Wirkungsgrad und die zeitliche Verfügbarkeit der Batterie berücksichtigen.
 
+Stress-Ereignisse sind definiert als die Viertelstunden mit der größten absoluten Abweichung (Spread) zwischen reBAP und Spotpreis, konkret die 5 % mit dem größten Betrag des Spreads, unabhängig von dessen Vorzeichen.
+
 ## Wichtige Ergebnisse
 
-### 1. Zusammenhang zwischen Spotpreis und reBAP
+### 1. Zeitlicher Verlauf über Dezember 2025
+
+<img width="2234" height="731" alt="plot3_timeseries" src="https://github.com/user-attachments/assets/652e52ae-c0c6-4093-808f-b9ad3f051a8b" />
+
+Hier ist der Zusammenhang zwischen Spotpreis und reBAP über den Zeitverlauf erkennbar. Es zeigt sich, dass der reBAP in den meisten Fällen dem Preistrend des Spotpreises folgt, mit einigen Ausnahmen.
+
+### 2. Zusammenhang zwischen Spotpreis und reBAP
 
 <img width="666" height="627" alt="plot1_korrelationsmatrix" src="https://github.com/user-attachments/assets/f4a79843-1d2e-444a-bef7-f0868c7e0767" />
 
@@ -37,7 +45,7 @@ Korrelationskennzahlen:
 
 Korrelationskoeffizient zwischen Spotpreis und reBAP: 0,64 zeigt ein moderater bis starker positiver Zusammenhang. reBAP weist überwiegend eine ähnliche Entwicklung wie der Spotpreis auf, weicht jedoch an einzelnen Tagen deutlich ab.
 
-### 2. Korrelation zwischen Spotpreisvolatilität und reBAP
+### 3. Korrelation zwischen Spotpreisvolatilität und reBAP
 
 Korrelation zwischen Spotpreisvolatilität und reBAP: 0,40
 
@@ -45,16 +53,10 @@ Die Ergebnisse zeigen eine moderat positive Korrelation (Pearson-r = 0,40) zwisc
 
 In den 25 % volatilsten Marktphasen betrug der durchschnittliche Betrag des reBAP 118,23 €/MWh, während er in weniger volatilen Marktphasen bei 90,99 €/MWh lag.
 
-### 3. Spotpreis vs. reBAP im Detail
+### 4. Spotpreis vs. reBAP im Detail
 <img width="1184" height="881" alt="plot2_scatterplot" src="https://github.com/user-attachments/assets/c825e0d0-39f7-48b4-824b-62d780c58e78" />
 
 Solange der Spotpreis bei bis zu ~150 €/MWh liegt, bewegt sich der reBAP in einer klar erkennbaren Bandbreite. Steigt der Spotpreis darüber hinaus, kann der reBAP jedoch stark ausschlagen. Dies deutet darauf hin, dass ein hoher Spotpreis mit deutlich größeren reBAP-Schwankungen einhergeht. In den meisten Fällen bewegen sich Spotpreis und reBAP jedoch in einem vergleichbaren Preisbereich.
-
-### 4. Zeitlicher Verlauf über Dezember 2025
-
-<img width="2234" height="731" alt="plot3_timeseries" src="https://github.com/user-attachments/assets/652e52ae-c0c6-4093-808f-b9ad3f051a8b" />
-
-Hier ist der Zusammenhang zwischen Spotpreis und reBAP über den Zeitverlauf erkennbar. Es zeigt sich, dass der reBAP in den meisten Fällen dem Preistrend des Spotpreises folgt, mit einigen Ausnahmen.
 
 ### 5. Häufigkeit von Stress-Ereignissen nach Tageszeit
 
